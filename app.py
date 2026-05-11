@@ -28,9 +28,16 @@ USE_RERANKER = True
 # 5) Temperatur generasi 
 TEMPERATURE = 0.2
 # 6) Model yang tersedia di Groq ada banyak, coba ganti-ganti ke yang lain dan coba bandingkan hasilnya
-GROQ_MODEL = "openai/gpt-oss-120b"  # model default di Groq
+GROQ_MODEL = "llama-3.1-8b-instant"  # model default di Groq
 
 # Model lain yang bisa dicobain: openai/gpt-oss-120b, llama-3.3-70b-versatile
+
+# Mapping ID model ke Nama User-Friendly
+MODEL_NAMES = {
+    "llama-3.1-8b-instant": "Llama 3.1 8B Instant",
+    "openai/gpt-oss-120b": "GPT-OSS 120B",
+    "llama-3.3-70b-versatile": "Llama 3.3 70B Versatile"
+}
 # -----------------------------
 
 # (non-tunable tapi penting)
@@ -145,7 +152,13 @@ def clear_knowledge():
 def health():
     # Ambil unique sources dari DOCS
     sources = list(set(d.get("meta", {}).get("source", "unknown") for d in DOCS))
-    return {"ok": True, "docs": len(DOCS), "sources": sources}
+    return {
+        "ok": True, 
+        "docs": len(DOCS), 
+        "sources": sources,
+        "model_id": GROQ_MODEL,
+        "model_name": MODEL_NAMES.get(GROQ_MODEL, GROQ_MODEL)
+    }
 
 @app.post("/ingest")
 async def ingest(

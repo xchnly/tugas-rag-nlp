@@ -60,6 +60,11 @@
     }
     .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
     .status-dot.off { background: var(--red); }
+    .model-badge {
+      margin-left: auto; padding: 4px 10px; border-radius: 6px;
+      background: var(--surface2); color: var(--accent);
+      font-weight: 600; font-size: 0.75rem; border: 1px solid var(--border);
+    }
 
     /* Cards */
     .card {
@@ -229,6 +234,7 @@
   <div class="status-bar" id="statusBar">
     <span class="status-dot" id="statusDot"></span>
     <span id="statusText">Connecting...</span>
+    <span id="modelBadge" class="model-badge" style="display:none"></span>
   </div>
 
   <!-- Upload Card (collapsible) -->
@@ -302,6 +308,7 @@ const statusText = document.getElementById('statusText');
 const pdfFiles = document.getElementById('pdfFiles');
 const fileLabel = document.getElementById('fileLabel');
 const replaceCheckbox = document.getElementById('replaceCheckbox');
+const modelBadge = document.getElementById('modelBadge');
 
 // --- Toggle upload panel ---
 toggleUpload.addEventListener('click', () => {
@@ -331,9 +338,15 @@ async function checkHealth() {
     statusDot.classList.remove('off');
     const src = j.sources && j.sources.length ? j.sources.join(', ') : 'none';
     statusText.textContent = `Online • ${j.docs} chunks • sources: ${src}`;
+    
+    if (j.model_name) {
+      modelBadge.textContent = j.model_name;
+      modelBadge.style.display = 'inline-block';
+    }
   } catch {
     statusDot.classList.add('off');
     statusText.textContent = 'Offline';
+    modelBadge.style.display = 'none';
   }
 }
 checkHealth();
