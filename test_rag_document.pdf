@@ -1,0 +1,85 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 7 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 1092 >>
+stream
+BT
+/F1 11 Tf
+50 750 Td
+12 TL
+(Retrieval-Augmented Generation \(RAG\) adalah teknik dalam Natural Language) Tj T*
+(Processing \(NLP\) yang menggabungkan sistem pencarian informasi \(retrieval\)) Tj T*
+(dengan model bahasa generatif \(generation\)) Tj T*
+(RAG bekerja dengan cara mengambil konteks relevan dari basis data dokumen) Tj T*
+(sebelum menghasilkan jawaban, sehingga jawaban yang dihasilkan lebih akurat dan) Tj T*
+(berbasis pada fakta yang ada. Komponen utama RAG adalah: \(1\) Retriever, yaitu) Tj T*
+(sistem yang mencari dokumen atau potongan teks yang relevan dengan pertanyaan) Tj T*
+(pengguna; \(2\) Generator, yaitu model bahasa besar \(LLM\) yang menggunakan konteks) Tj T*
+(yang diambil untuk menghasilkan jawaban; dan \(3\) Knowledge Base, yaitu basis) Tj T*
+(data dokumen yang diindeks menggunakan embedding vektor. Proses kerja RAG) Tj T*
+(dimulai dengan encoding pertanyaan pengguna menjadi vektor embedding) Tj T*
+(Selanjutnya, sistem mencari chunk-chunk dokumen yang memiliki kemiripan) Tj T*
+(tertinggi dengan vektor pertanyaan menggunakan cosine similarity) Tj T*
+ET
+
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 6 0 R /Resources << /Font << /F1 7 0 R >> >> >>
+endobj
+6 0 obj
+<< /Length 1611 >>
+stream
+BT
+/F1 11 Tf
+50 750 Td
+12 TL
+(Chunk-chunk terpilih kemudian dijadikan konteks untuk LLM, dan LLM menghasilkan) Tj T*
+(jawaban berdasarkan konteks tersebut. Parameter penting dalam RAG meliputi) Tj T*
+(CHUNK_SIZE yang menentukan ukuran potongan teks, TOP_K_INITIAL yang menentukan) Tj T*
+(berapa banyak kandidat awal yang diambil, FINAL_TOP_M yang menentukan berapa) Tj T*
+(chunk yang dikirim ke LLM, USE_RERANKER yang mengaktifkan model reranking untuk) Tj T*
+(meningkatkan presisi, dan TEMPERATURE yang mengontrol kreativitas jawaban LLM.) Tj T*
+(Keunggulan RAG dibandingkan fine-tuning model adalah: RAG tidak memerlukan) Tj T*
+(pelatihan ulang model, lebih mudah diperbarui dengan data baru, memberikan) Tj T*
+(transparansi sumber informasi, dan lebih hemat biaya komputasi) Tj T*
+(RAG sangat berguna untuk aplikasi QA \(Question Answering\) berbasis dokumen) Tj T*
+(perusahaan, chatbot layanan pelanggan, dan sistem pencarian informasi teknis.) Tj T*
+(Model embedding yang umum digunakan dalam RAG antara lain sentence-transformers,) Tj T*
+(OpenAI text-embedding-ada-002, dan multilingual-e5) Tj T*
+(Untuk reranking, biasanya digunakan Cross-Encoder model yang mengevaluasi) Tj T*
+(relevansi pasangan query-dokumen secara lebih akurat dibandingkan Bi-Encoder) Tj T*
+(biasa. Evaluasi sistem RAG dapat dilakukan menggunakan metrik seperti) Tj T*
+(Faithfulness \(seberapa akurat jawaban berdasarkan konteks\), Answer Relevancy) Tj T*
+(\(seberapa relevan jawaban dengan pertanyaan\), Context Precision \(presisi konteks) Tj T*
+(yang diambil\), dan Context Recall \(kelengkapan konteks yang diambil\).) Tj T*
+ET
+
+endstream
+endobj
+7 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000247 00000 n 
+0000001391 00000 n 
+0000001517 00000 n 
+0000003180 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R >>
+startxref
+3250
+%%EOF
