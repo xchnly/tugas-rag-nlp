@@ -277,3 +277,125 @@ SCORE_THRESHOLD = 0.30 # skor minimum cosine similarity
 
 * Dokumentasi lengkap parameter: buka `docs.html` di browser atau akses via menu **📖 Dokumentasi** di RAG Playground
 * Source code: `app.py` — semua parameter ada di bagian `KONFIGURASI INTI`
+
+---
+
+## 🧪 Hasil Eksperimen Nyata
+
+Eksperimen dilakukan terhadap **3 dokumen PDF berbeda**:
+- `test_rag_document.pdf` — penjelasan tentang RAG (Retrieval-Augmented Generation)
+- `pdf_python.pdf` — penjelasan dasar-dasar bahasa pemrograman Python
+- `pdf_datascience.pdf` — penjelasan konsep Data Science dan CRISP-DM
+
+---
+
+### 🔬 Eksperimen 1: CHUNK_SIZE
+
+**Pertanyaan:** *"Apa komponen utama RAG dan bagaimana proses kerjanya?"* (PDF: RAG)
+
+| Parameter | Chunks | Retrieval (ms) | Generation (ms) | Top Score | Observasi |
+|---|---|---|---|---|---|
+| `CHUNK_SIZE=100` | 8 | **53.654 ms** ⚠️ | 1.697 ms | 4.27 (reranker) | Sangat lambat! Reranker harus proses 8×K pasangan. Jawaban lengkap tapi retrieval bottleneck |
+| `CHUNK_SIZE=300` | 2 | **41 ms** ✅ | 1.139 ms | 0.879 | Paling cepat dan efisien. 2 chunk cukup mewakili seluruh dokumen |
+| `CHUNK_SIZE=600` | 1 | **85 ms** | 2.178 ms | 0.879 | Hanya 1 chunk (seluruh dokumen). Generation lebih lambat karena konteks lebih panjang |
+
+**Jawaban dengan CHUNK_SIZE=300:**
+> *"Komponen utama RAG meliputi: 1. Retriever – sistem yang mencari dokumen atau potongan teks yang relevan dengan pertanyaan pengguna. 2. Generator – model bahasa besar (LLM) yang memakai konteks yang di-retrieval untuk menghasilkan jawaban. 3. Knowledge Base – kumpulan dokumen yang telah di-index dengan embedding vektor..."*
+
+**Insight:** CHUNK_SIZE kecil (100) menyebabkan retrieval **1300x lebih lambat** dari chunk sedang (300) karena reranker harus memproses terlalu banyak pasangan. Chunk besar (600) menghasilkan hanya 1 chunk yang mewakili seluruh dokumen, sehingga generation lebih lambat.
+
+---
+
+### 🔬 Eksperimen 2: TOP_K_INITIAL
+
+**Pertanyaan:** *"Apa saja tipe data dasar dalam Python dan apa itu virtual environment?"* (PDF: Python)
+
+| Parameter | Retrieval (ms) | Generation (ms) | Top Score | Observasi |
+|---|---|---|---|---|
+| `TOP_K_INITIAL=5` | 187 ms | 1.096 ms | 0.8903 | Cukup untuk dokumen kecil (hanya 2 chunk). Jawaban akurat |
+| `TOP_K_INITIAL=20` | 121 ms ✅ | 1.068 ms | 0.8903 | Paling cepat. Optimal untuk dataset kecil |
+| `TOP_K_INITIAL=40` | 131 ms | 1.168 ms | 0.8903 | Sedikit lebih lambat, tidak ada perbedaan kualitas jawaban |
+
+**Jawaban dengan TOP_K_INITIAL=20:**
+> *"Tipe data dasar dalam Python meliputi: integer (bilangan bulat), float (bilangan desimal), string (teks), boolean (True/False), list (daftar yang dapat diubah), tuple (daftar yang tidak dapat diubah), dictionary (pasangan kunci-nilai), dan set (kumpulan nilai unik). Virtual environment adalah lingkungan terisolasi yang digunakan untuk mengelola dependensi tiap proyek Python, sehingga paket-paket yang di-install tidak saling berbenturan antar proyek."*
+
+**Insight:** Untuk dokumen kecil (2 chunk), TOP_K tidak berpengaruh signifikan karena candidate pool sudah terbatas. Perbedaan baru terlihat jelas pada dokumen besar (10+ halaman) di mana TOP_K menentukan seberapa luas "jaring" pencarian awal.
+
+---
+
+### 🔬 Eksperimen 3: FINAL_TOP_M
+
+**Pertanyaan:** *"Apa itu CRISP-DM dan bagaimana cara mengevaluasi model machine learning?"* (PDF: Data Science)
+
+| Parameter | Retrieval (ms) | Generation (ms) | Observasi |
+|---|---|---|---|
+| `FINAL_TOP_M=2` | 147 ms | 1.290 ms | Jawaban ringkas dan padat. Kedua chunk terambil semua |
+| `FINAL_TOP_M=5` | 103 ms ✅ | 1.540 ms | Jawaban lebih lengkap dengan referensi terpisah per chunk |
+| `FINAL_TOP_M=8` | 108 ms | 1.205 ms | Sama dengan FINAL_TOP_M=5 karena hanya ada 2 chunk tersedia |
+
+**Jawaban dengan FINAL_TOP_M=2:**
+> *"CRISP-DM adalah kerangka kerja siklus hidup data science yang terdiri dari enam fase: Business Understanding, Data Understanding, Data Preparation, Modeling, Evaluation, dan Deployment. Evaluasi model machine learning dilakukan dengan metrik: Klasifikasi: Accuracy, Precision, Recall, F1-Score, AUC-ROC. Regresi: MSE, RMSE, MAE, R-squared. Selain metrik, biasanya dipakai cross-validation untuk estimasi performa yang lebih robust."*
+
+**Insight:** Untuk dokumen 2 halaman, FINAL_TOP_M=2 sudah cukup karena jumlah chunk total hanya 2. "Semakin banyak konteks semakin bagus" tidak selalu benar — jika konteks melebihi jumlah chunk yang ada, tidak ada perbedaan. Pada dokumen besar, FINAL_TOP_M berpengaruh signifikan.
+
+---
+
+### 🔬 Eksperimen 4: USE_RERANKER
+
+**Pertanyaan:** *"Apa komponen utama RAG dan bagaimana proses kerjanya?"* (PDF: RAG)
+
+| Parameter | Retrieval (ms) | Generation (ms) | Observasi |
+|---|---|---|---|
+| `USE_RERANKER=True` | 152 ms | 1.158 ms | Jawaban lebih terstruktur. Reranker tambah ~50ms latency |
+| `USE_RERANKER=False` | 102 ms ✅ | 1.202 ms | Jawaban setara untuk dokumen kecil dengan vektor yang jelas |
+
+**Jawaban dengan USE_RERANKER=True:**
+> *"Komponen utama RAG meliputi: 1. Retriever – sistem yang mencari dokumen atau potongan teks yang relevan. 2. Generator – model bahasa besar (LLM) yang menggunakan konteks yang diambil. 3. Knowledge Base – basis data dokumen yang telah di-index dengan embedding vektor. Proses kerjanya: pertanyaan pengguna di-encode menjadi vektor embedding, kemudian Retriever mencari chunk yang paling mirip menggunakan cosine similarity, chunk terpilih dijadikan konteks untuk LLM..."*
+
+**Jawaban dengan USE_RERANKER=False:**
+> *"...Jika diaktifkan, model reranker (Cross-Encoder) dapat memperbaiki pemilihan chunk sebelum diberikan ke LLM."* (LLM justru menyebut reranker dalam jawabannya meski tidak aktif, karena konteks dari dokumen RAG menyebut reranker)
+
+**Insight:** Tambahan latency reranker hanya **~50ms** untuk dokumen kecil ini. Untuk dokumen teknis besar dengan banyak chunk ambigu, reranker jauh lebih berharga. Untuk dokumen kecil dengan vektor yang sudah jelas, `False` lebih efisien.
+
+---
+
+### 🔬 Eksperimen 5: TEMPERATURE
+
+**Pertanyaan:** *"Apa saja tipe data dasar dalam Python dan apa itu virtual environment?"* (PDF: Python)
+
+| Parameter | Generation (ms) | Karakter Jawaban |
+|---|---|---|
+| `TEMPERATURE=0.1` | 1.508 ms | Sangat formal, terstruktur, tambah referensi eksplisit "[1]" dan "[2]" per chunk |
+| `TEMPERATURE=0.5` | 1.264 ms | Natural, tambahkan tools (venv, virtualenv, conda, uv) secara spontan dari konteks |
+| `TEMPERATURE=0.9` | 1.305 ms | Variatif, lebih verbose, menambahkan detail `requirements.txt` yang ada di konteks |
+
+**Jawaban dengan TEMPERATURE=0.1** (sangat terstruktur):
+> *"...Virtual environment adalah lingkungan terisolasi yang digunakan untuk mengelola dependensi tiap proyek Python agar tidak terjadi konflik antar proyek [1]. Sumber: [1] pdf_python.pdf – 'Virtual environment dalam Python digunakan untuk mengisolasi dependensi proyek agar tidak konflik antar proyek.' [2] pdf_python.pdf – 'Tipe data dasar dalam Python meliputi...'"*
+
+**Jawaban dengan TEMPERATURE=0.9** (lebih bebas):
+> *"...Virtual environment adalah lingkungan terisolasi yang digunakan untuk mengelola dependensi tiap proyek Python agar tidak saling berbenturan. Tools umum yang dipakai antara lain `venv` (bawaan Python), `virtualenv`, `conda`, dan `uv`; biasanya setiap proyek memiliki virtual environment sendiri dengan file `requirements.txt`..."*
+
+**Insight:** Untuk dokumen faktual yang jelas, perbedaan temperature 0.1 vs 0.9 tidak menyebabkan halusinasi karena konteksnya sudah sangat spesifik. Yang berubah adalah **gaya penulisan**: temperature rendah → lebih formal dan ada citation eksplisit; temperature tinggi → lebih natural dan elaboratif. Untuk QA perusahaan, 0.1–0.2 lebih aman.
+
+---
+
+### 🔬 Eksperimen 6: GROQ_MODEL
+
+**Pertanyaan:** *"Apa itu CRISP-DM dan bagaimana cara mengevaluasi model machine learning?"* (PDF: Data Science)
+
+| Model | Generation (ms) | Gaya Jawaban |
+|---|---|---|
+| `llama-3.1-8b-instant` | **1.635 ms** | Plain text, daftar bernomor sederhana, tidak ada bold/markdown |
+| `llama-3.3-70b-versatile` | **927 ms** ✅ | Paling cepat! Jawaban ringkas dan padat, ada citation |
+| `openai/gpt-oss-120b` | **1.309 ms** | Paling terstruktur, markdown bold, bullet points, tambah insight tentang overfitting |
+
+**Jawaban llama-3.1-8b-instant** (plain, cepat):
+> *"CRISP-DM adalah Cross-Industry Standard Process for Data Mining, yaitu siklus proses Data Science yang meliputi: 1. Business Understanding 2. Data Understanding 3. Data Preparation 4. Modeling 5. Evaluation 6. Deployment..."*
+
+**Jawaban llama-3.3-70b-versatile** (ringkas, cepat):
+> *"CRISP-DM adalah Cross-Industry Standard Process for Data Mining, yaitu siklus proses Data Science yang meliputi: Business Understanding, Data Understanding, Data Preparation, Modeling, Evaluation, dan Deployment [pdf_datascience.pdf]. Evaluasi model machine learning menggunakan metrik yang berbeda tergantung jenis masalah..."*
+
+**Jawaban openai/gpt-oss-120b** (paling lengkap):
+> *"CRISP-DM adalah kerangka kerja siklus hidup data science yang terdiri dari enam fase: Business Understanding, Data Understanding, Data Preparation, Modeling, Evaluation, dan Deployment. Untuk mengevaluasi model machine learning: Klasifikasi: Accuracy, Precision, Recall, F1-Score, AUC-ROC. Regresi: MSE, RMSE, MAE, R-squared. Dengan kombinasi metrik yang tepat dan cross-validation, Anda dapat menilai apakah model terlalu overfit atau underfit dan mengambil langkah regulasi bila diperlukan."*
+
+**Insight:** Mengejutkan — `llama-3.3-70b-versatile` (70B parameter) justru **paling cepat** (927ms) dibanding 8B (1635ms)! Ini kemungkinan karena optimisasi infrastruktur Groq untuk model 70B. GPT-OSS-120B memberikan jawaban paling terstruktur dan kaya insight tetapi bukan yang tercepat. Untuk RAG sederhana, 70B adalah sweet spot terbaik.

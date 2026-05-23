@@ -1,0 +1,92 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 7 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 1035 >>
+stream
+BT
+/F1 10 Tf
+40 800 Td
+13 TL
+(Python adalah bahasa pemrograman tingkat tinggi yang diciptakan oleh Guido van Rossum dan) Tj T*
+(pertama kali dirilis pada tahun 1991. Python dikenal karena sintaksnya yang bersih dan) Tj T*
+(mudah dibaca, sehingga sangat populer untuk pemula maupun profesional. Python mendukung) Tj T*
+(paradigma pemrograman prosedural, berorientasi objek, dan fungsional.) Tj T*
+() Tj T*
+(Tipe data dasar dalam Python meliputi integer \(bilangan bulat\), float \(bilangan desimal\),) Tj T*
+(string \(teks\), boolean \(True/False\), list \(daftar yang bisa diubah\), tuple \(daftar yang) Tj T*
+(tidak bisa diubah\), dictionary \(pasangan kunci-nilai\), dan set \(kumpulan nilai unik\).) Tj T*
+(Python menggunakan indentasi sebagai penanda blok kode, bukan kurung kurawal seperti C) Tj T*
+(atau Java.) Tj T*
+() Tj T*
+(Fungsi dalam Python didefinisikan menggunakan kata kunci def. Python mendukung fungsi) Tj T*
+(lambda \(fungsi anonim satu baris\), fungsi rekursif, dan fungsi dengan argumen default.) Tj T*
+() Tj T*
+ET
+
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 6 0 R /Resources << /Font << /F1 7 0 R >> >> >>
+endobj
+6 0 obj
+<< /Length 1745 >>
+stream
+BT
+/F1 10 Tf
+40 800 Td
+13 TL
+(Python juga mendukung list comprehension, yaitu cara ringkas untuk membuat list baru dari) Tj T*
+(iterable yang sudah ada dengan kondisi tertentu.) Tj T*
+() Tj T*
+(Library populer Python meliputi NumPy untuk komputasi numerik, Pandas untuk analisis data,) Tj T*
+(Matplotlib dan Seaborn untuk visualisasi, Scikit-learn untuk machine learning, TensorFlow) Tj T*
+(dan PyTorch untuk deep learning, FastAPI dan Flask untuk web API, serta Requests untuk) Tj T*
+(HTTP client. Python Package Index \(PyPI\) menyediakan lebih dari 400.000 paket yang bisa) Tj T*
+(diinstall menggunakan pip.) Tj T*
+() Tj T*
+(Virtual environment dalam Python digunakan untuk mengisolasi dependensi proyek agar tidak) Tj T*
+(konflik antar proyek. Tools yang umum digunakan adalah venv \(bawaan Python\), virtualenv,) Tj T*
+(conda, dan uv. Setiap proyek sebaiknya memiliki virtual environment sendiri dengan file) Tj T*
+(requirements.txt untuk mencatat dependensinya.) Tj T*
+() Tj T*
+(Error handling dalam Python menggunakan blok try-except-finally. Python memiliki hierarki) Tj T*
+(exception yang luas, mulai dari BaseException di paling atas, hingga exception spesifik) Tj T*
+(seperti ValueError, TypeError, FileNotFoundError, dan KeyError. Custom exception bisa) Tj T*
+(dibuat dengan mewarisi kelas Exception.) Tj T*
+() Tj T*
+(Python memiliki fitur OOP \(Object-Oriented Programming\) yang lengkap, termasuk kelas,) Tj T*
+(inheritance \(pewarisan\), encapsulation, dan polymorphism. Dekorator adalah fitur Python) Tj T*
+(yang memungkinkan modifikasi perilaku fungsi atau kelas tanpa mengubah kode aslinya.) Tj T*
+(Generator dan iterator memungkinkan pemrosesan data secara lazy \(satu per satu\) yang hemat) Tj T*
+(memori.) Tj T*
+() Tj T*
+ET
+
+endstream
+endobj
+7 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000247 00000 n 
+0000001334 00000 n 
+0000001460 00000 n 
+0000003257 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R >>
+startxref
+3327
+%%EOF

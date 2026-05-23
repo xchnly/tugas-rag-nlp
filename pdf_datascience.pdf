@@ -1,0 +1,94 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 7 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 1395 >>
+stream
+BT
+/F1 10 Tf
+40 800 Td
+13 TL
+(Data Science adalah bidang interdisipliner yang menggabungkan statistik, matematika,) Tj T*
+(pemrograman, dan domain knowledge untuk mengekstrak wawasan dan pengetahuan dari data.) Tj T*
+(Data Scientist bertugas mengumpulkan, membersihkan, menganalisis, dan memvisualisasikan) Tj T*
+(data untuk mendukung pengambilan keputusan bisnis.) Tj T*
+() Tj T*
+(Proses Data Science mengikuti siklus yang disebut CRISP-DM \(Cross-Industry Standard) Tj T*
+(Process for Data Mining\): Business Understanding \(memahami tujuan bisnis\), Data) Tj T*
+(Understanding \(eksplorasi data awal\), Data Preparation \(pembersihan dan transformasi) Tj T*
+(data\), Modeling \(membangun model\), Evaluation \(mengevaluasi performa model\), dan) Tj T*
+(Deployment \(penerapan model ke produksi\).) Tj T*
+() Tj T*
+(Eksploratory Data Analysis \(EDA\) adalah langkah awal dalam analisis data untuk memahami) Tj T*
+(struktur, distribusi, dan hubungan antar variabel. EDA meliputi perhitungan statistik) Tj T*
+(deskriptif \(mean, median, modus, standar deviasi\), visualisasi distribusi dengan histogram) Tj T*
+(dan boxplot, analisis korelasi dengan heatmap, dan deteksi outlier dengan IQR atau) Tj T*
+(z-score.) Tj T*
+() Tj T*
+(Feature Engineering adalah proses membuat fitur baru atau mentransformasi fitur yang ada) Tj T*
+(untuk meningkatkan performa model machine learning.) Tj T*
+() Tj T*
+ET
+
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 6 0 R /Resources << /Font << /F1 7 0 R >> >> >>
+endobj
+6 0 obj
+<< /Length 1562 >>
+stream
+BT
+/F1 10 Tf
+40 800 Td
+13 TL
+(Teknik umum meliputi encoding variabel kategorikal \(one-hot encoding, label encoding\),) Tj T*
+(normalisasi dan standarisasi data numerik, penanganan missing values \(imputasi rata-rata,) Tj T*
+(median, atau KNN imputer\), dan pembuatan fitur interaksi.) Tj T*
+() Tj T*
+(Model machine learning dibagi menjadi dua kategori utama: supervised learning) Tj T*
+(\(pembelajaran terawasi\) dan unsupervised learning \(pembelajaran tidak terawasi\).) Tj T*
+(Supervised learning mencakup regresi \(untuk prediksi nilai kontinu\) dan klasifikasi \(untuk) Tj T*
+(prediksi kategori\). Algoritma populer meliputi Linear Regression, Logistic Regression,) Tj T*
+(Decision Tree, Random Forest, Gradient Boosting, SVM, dan Neural Network.) Tj T*
+() Tj T*
+(Evaluasi model menggunakan metrik yang berbeda tergantung jenis masalah. Untuk) Tj T*
+(klasifikasi: Accuracy, Precision, Recall, F1-Score, dan AUC-ROC. Untuk regresi: MSE, RMSE,) Tj T*
+(MAE, dan R-squared. Cross-validation digunakan untuk mendapatkan estimasi performa model) Tj T*
+(yang lebih robust dengan membagi data ke dalam beberapa fold.) Tj T*
+() Tj T*
+(Bias-variance tradeoff adalah konsep fundamental dalam machine learning. Model dengan) Tj T*
+(variance tinggi cenderung overfit \(terlalu hafal data training\). Model dengan bias tinggi) Tj T*
+(cenderung underfit \(terlalu simpel\). Regularisasi \(L1/Lasso dan L2/Ridge\) digunakan untuk) Tj T*
+(mengurangi overfitting. Teknik lain termasuk dropout untuk neural network dan pruning) Tj T*
+(untuk decision tree.) Tj T*
+() Tj T*
+ET
+
+endstream
+endobj
+7 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000247 00000 n 
+0000001694 00000 n 
+0000001820 00000 n 
+0000003434 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R >>
+startxref
+3504
+%%EOF

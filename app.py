@@ -28,7 +28,7 @@ USE_RERANKER = True
 # 5) Temperatur generasi 
 TEMPERATURE = 0.2
 # 6) Model yang tersedia di Groq ada banyak, coba ganti-ganti ke yang lain dan coba bandingkan hasilnya
-GROQ_MODEL = "openai/gpt-oss-120b"  # model default di Groq
+GROQ_MODEL = "llama-3.1-8b-instant"  # model default
 
 # Model lain yang bisa dicobain: openai/gpt-oss-120b, llama-3.3-70b-versatile
 

@@ -1,0 +1,291 @@
+{
+  "1a_chunk_kecil_100": {
+    "params": {
+      "CHUNK_SIZE": 100,
+      "TOP_K_INITIAL": 20,
+      "FINAL_TOP_M": 5,
+      "USE_RERANKER": true,
+      "TEMPERATURE": 0.2,
+      "GROQ_MODEL": "\"openai/gpt-oss-120b\""
+    },
+    "pdf": "rag",
+    "question": "Apa komponen utama RAG dan bagaimana proses kerjanya?",
+    "answer": "Komponen utama Retrieval‑Augmented Generation (RAG) meliputi:  \n\n1. **Retriever** – sistem yang mencari dokumen atau potongan teks (chunk) yang relevan dengan pertanyaan pengguna.  \n2. **Generator** – model bahasa besar (LLM) yang menggunakan konteks yang diambil untuk menghasilkan jawaban.  \n3. **Knowledge Base** – basis data dokumen yang telah di‑index dengan embedding vektor.  \n\n**Proses kerja RAG**:  \n\n1. Pertanyaan pengguna di‑encode menjadi vektor embedding.  \n2. Retriever mencari chunk‑chunk dokumen yang memiliki kemiripan tertinggi dengan vektor pertanyaan menggunakan cosine similarity.  \n3. Chunk‑chunk terpilih dijadikan konteks untuk LLM.  \n4. Generator (LLM) menghasilkan jawaban berdasarkan konteks tersebut.  \n\n[​test_rag_document.pdf] ​[source]",
+    "chunks": 8,
+    "retrieval_ms": 53653.9,
+    "generation_ms": 1697.1,
+    "top_score": 4.2721
+  },
+  "1b_chunk_sedang_300": {
+    "params": {
+      "CHUNK_SIZE": 300,
+      "TOP_K_INITIAL": 20,
+      "FINAL_TOP_M": 5,
+      "USE_RERANKER": true,
+      "TEMPERATURE": 0.2,
+      "GROQ_MODEL": "\"openai/gpt-oss-120b\""
+    },
+    "pdf": "rag",
+    "question": "Apa komponen utama RAG dan bagaimana proses kerjanya?",
+    "answer": "Komponen utama RAG meliputi:  \n1. **Retriever** – sistem yang mencari dokumen atau potongan teks yang relevan dengan pertanyaan pengguna.  \n2. **Generator** – model bahasa besar (LLM) yang memakai konteks yang di‑retrieval untuk menghasilkan jawaban.  \n3. **Knowledge Base** – kumpulan dokumen yang telah di‑index dengan embedding vektor.  \n\nProses kerja RAG:  \n1. Pertanyaan pengguna di‑encoding menjadi vektor embedding.  \n2. Retriever mencocokkan vektor pertanyaan dengan chunk‑chunk dokumen di Knowledge Base menggunakan cosine similarity, lalu memilih chunk dengan kemiripan tertinggi.  \n3. Chunk terpilih (sesuai parameter TOP_K, FINAL_TOP_M, dsb.) diberikan sebagai konteks ke Generator.  \n4. Generator (LLM) menghasilkan jawaban berdasar konteks tersebut, dengan kontrol suhu (temperature) untuk tingkat kreativitas.  \n\n[Source: test_rag_document.pdf]",
+    "chunks": 2,
+    "retrieval_ms": 40.9,
+    "generation_ms": 1139.0,
+    "top_score": 0.879
+  },
+  "1c_chunk_besar_600": {
+    "params": {
+      "CHUNK_SIZE": 600,
+      "TOP_K_INITIAL": 20,
+      "FINAL_TOP_M": 5,
+      "USE_RERANKER": true,
+      "TEMPERATURE": 0.2,
+      "GROQ_MODEL": "\"openai/gpt-oss-120b\""
+    },
+    "pdf": "rag",
+    "question": "Apa komponen utama RAG dan bagaimana proses kerjanya?",
+    "answer": "Komponen utama RAG adalah:  \n1. **Retriever** – sistem yang mencari dokumen atau potongan teks yang relevan dengan pertanyaan pengguna.  \n2. **Generator** – model bahasa besar (LLM) yang menggunakan konteks yang diambil untuk menghasilkan jawaban.  \n3. **Knowledge Base** – basis data dokumen yang telah di‑index dengan embedding vektor. [source]\n\nProses kerja RAG:  \n1. Pertanyaan pengguna di‑encode menjadi vektor embedding.  \n2. Retriever mencari chunk‑chunk dokumen yang memiliki kemiripan tertinggi dengan vektor pertanyaan menggunakan cosine similarity.  \n3. Chunk‑chunk terpilih (berdasarkan parameter seperti TOP_K_INITIAL, FINAL_TOP_M, dll.) dijadikan konteks untuk LLM.  \n4. Generator (LLM) menghasilkan jawaban berdasarkan konteks yang disediakan. [source]",
+    "chunks": 1,
+    "retrieval_ms": 85.1,
+    "generation_ms": 2178.0,
+    "top_score": 0.879
+  },
+  "2a_topk_kecil_5": {
+    "params": {
+      "CHUNK_SIZE": 300,
+      "TOP_K_INITIAL": 5,
+      "FINAL_TOP_M": 5,
+      "USE_RERANKER": true,
+      "TEMPERATURE": 0.2,
+      "GROQ_MODEL": "\"openai/gpt-oss-120b\""
+    },
+    "pdf": "python",
+    "question": "Apa saja tipe data dasar dalam Python dan apa itu virtual environment?",
+    "answer": "Tipe data dasar dalam Python meliputi: integer (bilangan bulat), float (bilangan desimal), string (teks), boolean (True/False), list (daftar yang bisa diubah), tuple (daftar yang tidak bisa diubah), dictionary (pasangan kunci‑nilai), dan set (kumpulan nilai unik)【pdf_python.pdf】.  \n\nVirtual environment adalah lingkungan terisolasi yang digunakan untuk mengelola dependensi tiap proyek Python agar tidak terjadi konflik antar proyek【pdf_python.pdf】.",
+    "chunks": 2,
+    "retrieval_ms": 187.0,
+    "generation_ms": 1096.3,
+    "top_score": 0.8903
+  },
+  "2b_topk_sedang_20": {
+    "params": {
+      "CHUNK_SIZE": 300,
+      "TOP_K_INITIAL": 20,
+      "FINAL_TOP_M": 5,
+      "USE_RERANKER": true,
+      "TEMPERATURE": 0.2,
+      "GROQ_MODEL": "\"openai/gpt-oss-120b\""
+    },
+    "pdf": "python",
+    "question": "Apa saja tipe data dasar dalam Python dan apa itu virtual environment?",
+    "answer": "Tipe data dasar dalam Python meliputi:\n\n- **integer** (bilangan bulat)  \n- **float** (bilangan desimal)  \n- **string** (teks)  \n- **boolean** (True/False)  \n- **list** (daftar yang dapat diubah)  \n- **tuple** (daftar yang tidak dapat diubah)  \n- **dictionary** (pasangan kunci‑nilai)  \n- **set** (kumpulan nilai unik)  \n\nVirtual environment adalah lingkungan terisolasi yang digunakan untuk mengelola dependensi tiap proyek Python, sehingga paket‑paket yang di‑install tidak saling berbenturan antar proyek [ pdf_python.pdf ].",
+    "chunks": 2,
+    "retrieval_ms": 121.3,
+    "generation_ms": 1068.4,
+    "top_score": 0.8903
+  },
+  "2c_topk_besar_40": {
+    "params": {
+      "CHUNK_SIZE": 300,
+      "TOP_K_INITIAL": 40,
+      "FINAL_TOP_M": 5,
+      "USE_RERANKER": true,
+      "TEMPERATURE": 0.2,
+      "GROQ_MODEL": "\"openai/gpt-oss-120b\""
+    },
+    "pdf": "python",
+    "question": "Apa saja tipe data dasar dalam Python dan apa itu virtual environment?",
+    "answer": "Tipe data dasar dalam Python meliputi:\n\n- **integer** (bilangan bulat)  \n- **float** (bilangan desimal)  \n- **string** (teks)  \n- **boolean** (True/False)  \n- **list** (daftar yang bisa diubah)  \n- **tuple** (daftar yang tidak bisa diubah)  \n- **dictionary** (pasangan kunci‑nilai)  \n- **set** (kumpulan nilai unik)  \n\nVirtual environment adalah lingkungan terisolasi yang digunakan untuk mengelola dependensi tiap proyek Python agar tidak terjadi konflik antar proyek [ pdf_python.pdf ].  \n\n[ pdf_python.pdf ]",
+    "chunks": 2,
+    "retrieval_ms": 131.6,
+    "generation_ms": 1168.1,
+    "top_score": 0.8903
+  },
+  "3a_topm_sedikit_2": {
+    "params": {
+      "CHUNK_SIZE": 300,
+      "TOP_K_INITIAL": 20,
+      "FINAL_TOP_M": 2,
+      "USE_RERANKER": true,
+      "TEMPERATURE": 0.2,
+      "GROQ_MODEL": "\"openai/gpt-oss-120b\""
+    },
+    "pdf": "datascience",
+    "question": "Apa itu CRISP-DM dan bagaimana cara mengevaluasi model machine learning?",
+    "answer": "CRISP‑DM (Cross‑Industry Standard Process for Data Mining) adalah kerangka kerja siklus hidup data science yang terdiri dari enam fase: Business Understanding, Data Understanding, Data Preparation, Modeling, Evaluation, dan Deployment【pdf_datascience.pdf】.  \n\nEvaluasi model machine learning dilakukan pada fase Evaluation dengan mengukur performa menggunakan metrik yang sesuai jenis masalah:  \n- **Klasifikasi**: Accuracy, Precision, Recall, F1‑Score, AUC‑ROC.  \n- **Regresi**: MSE, RMSE, MAE, R‑squared.  \n\nSelain metrik, biasanya dipakai **cross‑validation** untuk memperoleh estimasi performa yang lebih robust dengan membagi data ke beberapa fold【pdf_datascience.pdf】.",
+    "chunks": 2,
+    "retrieval_ms": 147.7,
+    "generation_ms": 1290.0,
+    "top_score": 0.8749
+  },
+  "3b_topm_sedang_5": {
+    "params": {
+      "CHUNK_SIZE": 300,
+      "TOP_K_INITIAL": 20,
+      "FINAL_TOP_M": 5,
+      "USE_RERANKER": true,
+      "TEMPERATURE": 0.2,
+      "GROQ_MODEL": "\"openai/gpt-oss-120b\""
+    },
+    "pdf": "datascience",
+    "question": "Apa itu CRISP-DM dan bagaimana cara mengevaluasi model machine learning?",
+    "answer": "CRISP‑DM (Cross‑Industry Standard Process for Data Mining) adalah kerangka kerja siklus hidup proyek data science yang meliputi enam fase: Business Understanding, Data Understanding, Data Preparation, Modeling, Evaluation, dan Deployment【1】.  \n\nUntuk mengevaluasi model machine learning, pilih metrik yang sesuai dengan jenis masalah:  \n- **Klasifikasi**: Accuracy, Precision, Recall, F1‑Score, AUC‑ROC.  \n- **Regresi**: MSE, RMSE, MAE, R‑squared.  \n\nSelain metrik, gunakan teknik **cross‑validation** untuk memperkirakan performa secara lebih robust dengan membagi data ke beberapa fold【2】.  \n\n[1] pdf_datascience.pdf – penjelasan CRISP‑DM.  \n[2] pdf_datascience.pdf – penggunaan cross‑validation dan metrik evaluasi.",
+    "chunks": 2,
+    "retrieval_ms": 103.8,
+    "generation_ms": 1540.8,
+    "top_score": 0.8749
+  },
+  "3c_topm_banyak_8": {
+    "params": {
+      "CHUNK_SIZE": 300,
+      "TOP_K_INITIAL": 20,
+      "FINAL_TOP_M": 8,
+      "USE_RERANKER": true,
+      "TEMPERATURE": 0.2,
+      "GROQ_MODEL": "\"openai/gpt-oss-120b\""
+    },
+    "pdf": "datascience",
+    "question": "Apa itu CRISP-DM dan bagaimana cara mengevaluasi model machine learning?",
+    "answer": "CRISP‑DM (Cross‑Industry Standard Process for Data Mining) adalah kerangka kerja siklus hidup data science yang terdiri dari enam fase: **Business Understanding**, **Data Understanding**, **Data Preparation**, **Modeling**, **Evaluation**, dan **Deployment**【pdf_datascience.pdf】.  \n\nUntuk mengevaluasi model machine learning, pilih metrik yang sesuai dengan jenis masalah:  \n\n- **Klasifikasi**: Accuracy, Precision, Recall, F1‑Score, AUC‑ROC.  \n- **Regresi**: MSE, RMSE, MAE, R‑squared.  \n\nSelain metrik, gunakan **cross‑validation** untuk memperkirakan performa secara lebih robust dengan membagi data ke beberapa fold【pdf_datascience.pdf】.",
+    "chunks": 2,
+    "retrieval_ms": 108.5,
+    "generation_ms": 1205.0,
+    "top_score": 0.8749
+  },
+  "4a_reranker_true": {
+    "params": {
+      "CHUNK_SIZE": 300,
+      "TOP_K_INITIAL": 20,
+      "FINAL_TOP_M": 5,
+      "USE_RERANKER": true,
+      "TEMPERATURE": 0.2,
+      "GROQ_MODEL": "\"openai/gpt-oss-120b\""
+    },
+    "pdf": "rag",
+    "question": "Apa komponen utama RAG dan bagaimana proses kerjanya?",
+    "answer": "Komponen utama RAG meliputi:  \n1. **Retriever** – sistem yang mencari dokumen atau potongan teks yang relevan dengan pertanyaan pengguna.  \n2. **Generator** – model bahasa besar (LLM) yang menggunakan konteks yang diambil untuk menghasilkan jawaban.  \n3. **Knowledge Base** – basis data dokumen yang telah di‑index dengan embedding vektor.  \n\nProses kerjanya: pertanyaan pengguna pertama‑tama di‑encode menjadi vektor embedding, kemudian Retriever mencari chunk‑chunk dokumen yang paling mirip dengan vektor pertanyaan menggunakan cosine similarity. Chunk‑chunk terpilih dijadikan konteks untuk LLM (Generator), dan LLM menghasilkan jawaban berdasarkan konteks tersebut【source】.",
+    "chunks": 2,
+    "retrieval_ms": 152.4,
+    "generation_ms": 1158.2,
+    "top_score": 0.879
+  },
+  "4b_reranker_false": {
+    "params": {
+      "CHUNK_SIZE": 300,
+      "TOP_K_INITIAL": 20,
+      "FINAL_TOP_M": 5,
+      "USE_RERANKER": false,
+      "TEMPERATURE": 0.2,
+      "GROQ_MODEL": "\"openai/gpt-oss-120b\""
+    },
+    "pdf": "rag",
+    "question": "Apa komponen utama RAG dan bagaimana proses kerjanya?",
+    "answer": "Komponen utama RAG meliputi:  \n1. **Retriever** – sistem yang mencari dokumen atau potongan teks relevan dengan pertanyaan.  \n2. **Generator** – model bahasa besar (LLM) yang memakai konteks yang di‑retrieval untuk menghasilkan jawaban.  \n3. **Knowledge Base** – kumpulan dokumen yang telah di‑index dengan embedding vektor.  \n\nProses kerjanya: pertanyaan pengguna pertama‑tama di‑encode menjadi vektor embedding, kemudian Retriever mencocokkan vektor tersebut dengan chunk‑chunk dokumen di Knowledge Base menggunakan cosine similarity. Chunk‑chunk terpilih (berdasarkan parameter seperti TOP_K_INITIAL, FINAL_TOP_M, dll.) disediakan sebagai konteks bagi Generator, yang kemudian menghasilkan jawaban berbasis konteks tersebut. Jika diaktifkan, model reranker (Cross‑Encoder) dapat memperbaiki pemilihan chunk sebelum diberikan ke LLM【source】.",
+    "chunks": 2,
+    "retrieval_ms": 102.0,
+    "generation_ms": 1202.3,
+    "top_score": 0.879
+  },
+  "5a_temp_001": {
+    "params": {
+      "CHUNK_SIZE": 300,
+      "TOP_K_INITIAL": 20,
+      "FINAL_TOP_M": 5,
+      "USE_RERANKER": true,
+      "TEMPERATURE": 0.1,
+      "GROQ_MODEL": "\"openai/gpt-oss-120b\""
+    },
+    "pdf": "python",
+    "question": "Apa saja tipe data dasar dalam Python dan apa itu virtual environment?",
+    "answer": "Tipe data dasar dalam Python meliputi:\n\n- **integer** (bilangan bulat)  \n- **float** (bilangan desimal)  \n- **string** (teks)  \n- **boolean** (True/False)  \n- **list** (daftar yang bisa diubah)  \n- **tuple** (daftar yang tidak bisa diubah)  \n- **dictionary** (pasangan kunci‑nilai)  \n- **set** (kumpulan nilai unik)  \n\nVirtual environment adalah lingkungan terisolasi yang digunakan untuk mengelola dependensi tiap proyek Python agar tidak terjadi konflik antar proyek [1].\n\n**Sumber:**  \n[1] pdf_python.pdf – “Virtual environment dalam Python digunakan untuk mengisolasi dependensi proyek agar tidak konflik antar proyek.” [pdf_python.pdf]  \n\n[2] pdf_python.pdf – “Tipe data dasar dalam Python meliputi integer (bilangan bulat), float (bilangan desimal), string (teks), boolean (True/False), list (daftar yang bisa diubah), tuple (daftar yang tidak bisa diubah), dictionary (pasangan kunci‑nilai), dan set (kumpulan nilai unik).” [pdf_python.pdf]",
+    "chunks": 2,
+    "retrieval_ms": 232.1,
+    "generation_ms": 1508.6,
+    "top_score": 0.8903
+  },
+  "5b_temp_050": {
+    "params": {
+      "CHUNK_SIZE": 300,
+      "TOP_K_INITIAL": 20,
+      "FINAL_TOP_M": 5,
+      "USE_RERANKER": true,
+      "TEMPERATURE": 0.5,
+      "GROQ_MODEL": "\"openai/gpt-oss-120b\""
+    },
+    "pdf": "python",
+    "question": "Apa saja tipe data dasar dalam Python dan apa itu virtual environment?",
+    "answer": "Tipe data dasar dalam Python meliputi:\n\n- **integer** (bilangan bulat)  \n- **float** (bilangan desimal)  \n- **string** (teks)  \n- **boolean** (True/False)  \n- **list** (daftar yang bisa diubah)  \n- **tuple** (daftar yang tidak bisa diubah)  \n- **dictionary** (pasangan kunci‑nilai)  \n- **set** (kumpulan nilai unik)  \n\nVirtual environment adalah lingkungan terisolasi yang digunakan untuk mengelola dependensi tiap proyek Python agar tidak terjadi konflik antar proyek — biasanya dibuat dengan tools seperti `venv`, `virtualenv`, `conda`, atau `uv` dan disertai file `requirements.txt` untuk mencatat paket yang dibutuhkan【pdf_python.pdf】.",
+    "chunks": 2,
+    "retrieval_ms": 131.2,
+    "generation_ms": 1264.8,
+    "top_score": 0.8903
+  },
+  "5c_temp_090": {
+    "params": {
+      "CHUNK_SIZE": 300,
+      "TOP_K_INITIAL": 20,
+      "FINAL_TOP_M": 5,
+      "USE_RERANKER": true,
+      "TEMPERATURE": 0.9,
+      "GROQ_MODEL": "\"openai/gpt-oss-120b\""
+    },
+    "pdf": "python",
+    "question": "Apa saja tipe data dasar dalam Python dan apa itu virtual environment?",
+    "answer": "Tipe data dasar dalam Python meliputi:\n\n- **integer** (bilangan bulat)  \n- **float** (bilangan desimal)  \n- **string** (teks)  \n- **boolean** (True/False)  \n- **list** (daftar yang dapat diubah)  \n- **tuple** (daftar yang tidak dapat diubah)  \n- **dictionary** (pasangan kunci‑nilai)  \n- **set** (kumpulan nilai unik)  \n\nVirtual environment adalah lingkungan terisolasi yang digunakan untuk mengelola dependensi tiap proyek Python agar tidak saling berbenturan. Tools umum yang dipakai antara lain `venv` (bawaan Python), `virtualenv`, `conda`, dan `uv`; biasanya setiap proyek memiliki virtual environment sendiri dengan file `requirements.txt` untuk mencatat paket yang diperlukan【pdf_python.pdf】.",
+    "chunks": 2,
+    "retrieval_ms": 134.3,
+    "generation_ms": 1305.5,
+    "top_score": 0.8903
+  },
+  "6a_model_8b": {
+    "params": {
+      "CHUNK_SIZE": 300,
+      "TOP_K_INITIAL": 20,
+      "FINAL_TOP_M": 5,
+      "USE_RERANKER": true,
+      "TEMPERATURE": 0.2,
+      "GROQ_MODEL": "\"llama-3.1-8b-instant\""
+    },
+    "pdf": "datascience",
+    "question": "Apa itu CRISP-DM dan bagaimana cara mengevaluasi model machine learning?",
+    "answer": "CRISP-DM adalah Cross-Industry Standard Process for Data Mining, yaitu siklus proses Data Science yang meliputi:\n\n1. Business Understanding (memahami tujuan bisnis)\n2. Data Understanding (eksplorasi data awal)\n3. Data Preparation (pembersihan dan transformasi data)\n4. Modeling (membangun model)\n5. Evaluation (mengevaluasi performa model)\n6. Deployment (penerapan model ke produksi)\n\nUntuk mengevaluasi model machine learning, kita dapat menggunakan metrik yang berbeda tergantung jenis masalah, seperti:\n\n- Klasifikasi: Accuracy, Precision, Recall, F1-Score, dan AUC-ROC\n- Regresi: MSE, RMSE, MAE, dan R-squared\n\nSelain itu, kita juga dapat menggunakan cross-validation untuk mendapatkan estimasi performa model yang lebih robust dengan membagi data ke dalam beberapa fold.",
+    "chunks": 2,
+    "retrieval_ms": 166.3,
+    "generation_ms": 1635.0,
+    "top_score": 0.8749
+  },
+  "6b_model_70b": {
+    "params": {
+      "CHUNK_SIZE": 300,
+      "TOP_K_INITIAL": 20,
+      "FINAL_TOP_M": 5,
+      "USE_RERANKER": true,
+      "TEMPERATURE": 0.2,
+      "GROQ_MODEL": "\"llama-3.3-70b-versatile\""
+    },
+    "pdf": "datascience",
+    "question": "Apa itu CRISP-DM dan bagaimana cara mengevaluasi model machine learning?",
+    "answer": "CRISP-DM adalah Cross-Industry Standard Process for Data Mining, yaitu siklus proses Data Science yang meliputi: Business Understanding, Data Understanding, Data Preparation, Modeling, Evaluation, dan Deployment [pdf_datascience.pdf]. Evaluasi model machine learning menggunakan metrik yang berbeda tergantung jenis masalah, seperti Accuracy, Precision, Recall, F1-Score, dan AUC-ROC untuk klasifikasi, serta MSE, RMSE, MAE, dan R-squared untuk regresi [pdf_datascience.pdf].",
+    "chunks": 2,
+    "retrieval_ms": 133.8,
+    "generation_ms": 927.2,
+    "top_score": 0.8749
+  },
+  "6c_model_120b": {
+    "params": {
+      "CHUNK_SIZE": 300,
+      "TOP_K_INITIAL": 20,
+      "FINAL_TOP_M": 5,
+      "USE_RERANKER": true,
+      "TEMPERATURE": 0.2,
+      "GROQ_MODEL": "\"openai/gpt-oss-120b\""
+    },
+    "pdf": "datascience",
+    "question": "Apa itu CRISP-DM dan bagaimana cara mengevaluasi model machine learning?",
+    "answer": "CRISP‑DM (Cross‑Industry Standard Process for Data Mining) adalah kerangka kerja siklus hidup data science yang terdiri dari enam fase: **Business Understanding**, **Data Understanding**, **Data Preparation**, **Modeling**, **Evaluation**, dan **Deployment**【pdf_datascience.pdf】.  \n\nUntuk **mengevaluasi model machine learning**, pilih metrik yang sesuai dengan tipe masalah:  \n\n- **Klasifikasi**: Accuracy, Precision, Recall, F1‑Score, AUC‑ROC.  \n- **Regresi**: MSE, RMSE, MAE, R‑squared.  \n\nSelain metrik, gunakan **cross‑validation** untuk memperkirakan performa secara lebih robust dengan membagi data ke beberapa fold【pdf_datascience.pdf】.  \n\nDengan kombinasi metrik yang tepat dan cross‑validation, Anda dapat menilai apakah model terlalu overfit (variance tinggi) atau underfit (bias tinggi) dan mengambil langkah regulasi bila diperlukan.",
+    "chunks": 2,
+    "retrieval_ms": 134.1,
+    "generation_ms": 1309.7,
+    "top_score": 0.8749
+  }
+}
